@@ -82,9 +82,12 @@
 
 <style scoped>
 .dashboard {
-  padding: 24px;
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: clamp(16px, 2.4vw, 32px);
   background: #f5f7fb;
-  min-height: 100vh;
 }
 
 .hero {
@@ -261,5 +264,11 @@ h2 {
   height: 100%;
   background: linear-gradient(90deg, #f59e0b, #fb923c);
   border-radius: inherit;
+}
+
+#app {
+  width: 100%;
+  max-width: none;
+  /* 保留其餘既有樣式 */
 }
 </style>

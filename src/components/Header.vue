@@ -1,15 +1,21 @@
+<script setup lang="ts">
+const emit = defineEmits<{
+  navigate: [page: 'overview' | 'food-items']
+}>()
+</script>
+
 <template>
   <header class="header">
-    <div class="brand">
+    <RouterLink class="brand" :to="{ name: 'dashboard' }" aria-label="Go to dashboard">
       <div class="logo" aria-hidden="true">🍽️</div>
       <div class="title-group">
         <h1>Food Order System Admin Portal</h1>
         <p>Manage menu, tables, and user roles</p>
       </div>
-    </div>
+    </RouterLink>
 
     <nav class="nav-actions" aria-label="Admin functions">
-      <button type="button">FoodItem</button>
+      <RouterLink class="nav-link" :to="{ name: 'food-items' }">FoodItem</RouterLink>
       <button type="button">Table Setting</button>
       <button type="button">Role configuration</button>
     </nav>
@@ -31,6 +37,17 @@
   display: flex;
   align-items: center;
   gap: 12px;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  text-decoration: none;
+}
+
+.brand:focus-visible,
+.nav-link:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 4px;
 }
 
 .logo {
@@ -59,6 +76,25 @@
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 16px;
+  background: #ffffff;
+  color: #4f46e5;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link.router-link-active {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
 button {
